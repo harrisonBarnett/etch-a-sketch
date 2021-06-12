@@ -78,9 +78,14 @@ function changeColor() {
 
 function reset() {
     let newRows = prompt("how wide? (max 100): ");
-    container = document.querySelector('div.container');
-    container.parentNode.removeChild(container);
-    buildGrid(newRows);
-    addHover("black");
+    if (newRows < 16 || newRows > 100) {
+        alert("try again (min 16, max 100)");
+        reset();
+    } else {
+        container = document.querySelector('div.container');
+        container.parentNode.removeChild(container);
+        buildGrid(newRows);
+        addHover("black");
+    }
 }
 
