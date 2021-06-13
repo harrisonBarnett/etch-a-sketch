@@ -58,13 +58,11 @@ function randColor() {
     let b = randValue();
     let g = randValue();
     let rgb = "rgb(" + r + "," + b + "," + g + ")";
-    console.log(rgb);
     return rgb;
 }
 
 function changeColor() {
     let value = event.target.value;
-    console.log(value);
     if (value == "black") {
         addHover("black");
     } else if (value == "blue") {
@@ -77,7 +75,11 @@ function changeColor() {
 }
 
 function reset() {
-    let newRows = parseInt(prompt("how wide? (min 16, max 100): "));
+    let newRows =prompt("how wide? (min 16, max 100): ");
+    if (newRows == null) {
+        return;
+    }
+    newRows = parseInt(newRows);
     if (newRows < 16 || newRows > 100) {
         alert("try again (min 16, max 100)");
         reset();
