@@ -77,15 +77,20 @@ function changeColor() {
 }
 
 function reset() {
-    let newRows = prompt("how wide? (max 100): ");
+    let newRows = parseInt(prompt("how wide? (min 16, max 100): "));
     if (newRows < 16 || newRows > 100) {
         alert("try again (min 16, max 100)");
+        reset();
+    } else if (!Number.isInteger(newRows)) {
+        alert("invalid input, come on man");
         reset();
     } else {
         container = document.querySelector('div.container');
         container.parentNode.removeChild(container);
         buildGrid(newRows);
         addHover("black");
+        return true;
     }
 }
+
 
